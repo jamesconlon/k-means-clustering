@@ -8,17 +8,23 @@ Created on Tue Feb 21 22:33:31 2017
 '''
 This is an example script using KMeansImage
 
-The KMeansImage library can be used to create KMeansImage objects, but can also be used by calling methods in the KMeansImage file
+The KMeansImage library can be used to create KMeansImage objects, but can also
+be used by calling methods in the KMeansImage file
 
 
 to create an object, initialize as kmi.KMeansImage
-from here you have access to its attributes and can plot or save the image by calling .plot()
+parameters: (self, image_name, image_type = 'jpg', n_colors = 3,method = 'k-means++')
 
+
+from here you have access to its attributes and can plot or save the image by calling .plot()
+plot parameters: (self, save = False, output_image_name = 'default')
 
 to just call and return a KMeansImage you can use the function makeKmeansImage
 
 
 
+by default, the number of colors (clusters) is 3. Using more colors results in
+longer run time
 
 
 '''
@@ -46,7 +52,7 @@ time0 = round((time.time()-t_start0),1)
 print('K-Means image took',time0,'seconds')
 
 
-'''
+
 t_start1 = time.time()
 kmi1 = kmi.KMeansImage(image_name = image_names[1], image_type = image_types[1], n_colors=3)
 print(kmi1.image_file_name)
@@ -69,7 +75,7 @@ kmi3 = kmi.makeKMeansImage(image_name = image_names[1],image_type = image_types[
 kmi.plotKMeansImage(kmi3)
 time3 = round((time.time()-t_start3),1)
 print('K-Means image took',time3,'seconds')
-'''
+
 
 
 
