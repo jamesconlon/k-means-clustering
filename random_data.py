@@ -14,10 +14,11 @@ import matplotlib.pyplot as plt
 
 
 ##########
-#feel free to change any of the following:
+# (1) Customizing input variables 
+# feel free to change any of the following:
 n_clusters = 5 
 n_samples = 300
-cluster_std = 10
+cluster_std = 20
 method = 'random' # can be changed to 'k-means++'
 ###########
 
@@ -27,7 +28,7 @@ boundary = 100 #rough scope of the plot is boundary X boundary. This can be chan
 Don't change anything below here
 '''
 
-#randomizing the location of the clusters
+# (2) randomizing the location of the clusters
 centroids= []
 for i in range(n_clusters):
     xi = int(random.random()*boundary)
@@ -38,7 +39,7 @@ generated_centroids = np.reshape(centroids,(n_clusters,2))
 print('generated centroids\n',generated_centroids)
 
 
-#making random blobs around centroids
+# (3) making random blobs around centroids
 X, x = make_blobs(n_samples=n_samples,centers = centroids,cluster_std=cluster_std)
 X_orig = np.column_stack((X,x))
 
@@ -50,19 +51,20 @@ plt.scatter(generated_centroids[:,0],generated_centroids[:,1],marker='D', color=
 
 colormap = np.array(['black','green','cyan','yellow','orange','magenta','brown']*10)
 
+# (4) Using k-Means to fit the randomized data
 test_means = KMeans(n_clusters = n_clusters,init=method) 
 test_means.fit(X)
 test_centers = test_means.cluster_centers_
 test_labels = test_means.labels_
 
 
+# (5) Plotting results (and making sure the estimated centroids are in the correct order)
+
 def getDist(x1,y1,x2,y2):
     x = x1-x2
     y= y1-y2
     return((x**2+y**2)**.5)
 
-
-# making sure the new clusters are in the same order as the generated ones
 ref_array = [-1]*5
 for i in range(n_clusters):
     dist_array = [1000]*20
