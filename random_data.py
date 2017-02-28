@@ -35,7 +35,7 @@ for i in range(n_clusters):
     centroids.append([xi,yi])
     
 generated_centroids = np.reshape(centroids,(n_clusters,2))
-print(generated_centroids)
+print('generated centroids\n',generated_centroids)
 
 
 #making random blobs around centroids
@@ -85,7 +85,7 @@ for i in range(n_clusters):
     
 location_match = np.reshape(location_match,(n_clusters,2))
 final_test_centers = location_match
-print(final_test_centers.round(1))
+print('estimated centroids\n',final_test_centers.round(1))
 
 
 plt.scatter(X[:,0],X[:,1],c = colormap[test_labels])
