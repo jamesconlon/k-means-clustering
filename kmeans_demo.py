@@ -46,7 +46,7 @@ print('using class objects:\n')
 
 t_start0 = time.time()
 kmi0 = kmi.KMeansImage(image_name = image_names[0], image_type = image_types[0], n_colors=3)
-kmi0.plot(save = True, output_image_name = 'test')
+kmi0.plot(save = True, output_image_name = 'test')#this will also save the image as 'test.jpg'
 print('RGB values:\n',kmi0.center_rgb_values)
 time0 = round((time.time()-t_start0),1)
 print('K-Means image took',time0,'seconds')
